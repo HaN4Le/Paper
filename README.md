@@ -28,4 +28,16 @@ int foo (int x) { // x is an input
 - <font color = "navy">混合模糊测试：</font>将黑盒或者灰盒模糊测试技术与白盒模糊测试技术结合起来，目的是探索折衷方案，以确定何时何地使用简单的技术足以获得良好的代码覆盖率。基于语法的模糊测试也可以白盒子模糊测试相结合。
 
 
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Conclude**：Is fuzzing a hack, an art, or a science?
+- 黑盒子模糊测试是一个简单的“`Hack`”，但是它可以有效地找到应用程序中那些从来没有被fuzz过的bug；
+
+- 基于语法的模糊测试通过允许用户的创造力和专长去知道fuzz，从而回到了上述问题的`art`；
+
+- 白盒子模糊测试可利用计算机科学（`science`）研究在程序验证方面的先进成果，并探索如何以及何时以一种证明论的意义在数学上“模糊并完善”模糊测试；
+
+
+```
+The effectiveness of these three main fuzzing techniques depends on the type of application being fuzzed. For binary input formats (like JPEG or PNG), fully-automatic blackbox and whitebox fuzzing techniques work well, provided a diverse set of seed inputs is available. For complex structured non-binary formats (like JavaScript or C), the effectiveness of blackbox and whitebox fuzzing is unfortunately limited, and grammarbased fuzzing with manually-written grammars are usually the most effective approach. For specific classes of structured input formats like XML or JSON dialects, domain-specific fuzzers for XML or JSON can also be used: these fuzzers parse the high-level tree structure of an input and include custom fuzzing rules (like reordering child nodes, increasing their number, inversing parent-child relationships, and so on) that will challenge the application logic while still generating syntactically correct XML or JSON data. Of course, it is worth emphasizing that no fuzzing technique is guaranteed to find all bugs in practice.
+
+Despite significant progress in the art and science of fuzzing over the last two decades, important challenges remain open. How to engineer exhaustive symbolic testing (that is, a form of verification) in a cost-effective manner is still an open problem for large applications. How to automate the generation of input grammars for complex formats, perhaps using machine learning, is another challenge. Finally, how to effectively fuzz large distributed applications like entire cloud services is yet another open challenge.
+```
