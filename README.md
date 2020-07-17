@@ -52,3 +52,6 @@ for large applications. How to automate the generation of input grammars for com
 another challenge. Finally, how to effectively fuzz large distributed applications like entire cloud services is yet another open 
 challenge.
 ```
+
+#### 第二篇：《LearnAFL: Greybox Fuzzing With Knowledge Enhancement》
+> ACCESS.2019.2936235
