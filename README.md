@@ -37,7 +37,19 @@ int foo (int x) { // x is an input
 
 
 ```
-The effectiveness of these three main fuzzing techniques depends on the type of application being fuzzed. For binary input formats (like JPEG or PNG), fully-automatic blackbox and whitebox fuzzing techniques work well, provided a diverse set of seed inputs is available. For complex structured non-binary formats (like JavaScript or C), the effectiveness of blackbox and whitebox fuzzing is unfortunately limited, and grammarbased fuzzing with manually-written grammars are usually the most effective approach. For specific classes of structured input formats like XML or JSON dialects, domain-specific fuzzers for XML or JSON can also be used: these fuzzers parse the high-level tree structure of an input and include custom fuzzing rules (like reordering child nodes, increasing their number, inversing parent-child relationships, and so on) that will challenge the application logic while still generating syntactically correct XML or JSON data. Of course, it is worth emphasizing that no fuzzing technique is guaranteed to find all bugs in practice.
+The effectiveness of these three main fuzzing techniques depends on the type of application being fuzzed. For binary input formats
+ (like JPEG or PNG), fully-automatic blackbox and whitebox fuzzing techniques work well, provided a diverse set of seed inputs is 
+available. For complex structured non-binary formats (like JavaScript or C), the effectiveness of blackbox and whitebox fuzzing is
+ unfortunately limited, and grammarbased fuzzing with manually-written grammars are usually the most effective approach. 
+For specific classes of structured input formats like XML or JSON dialects, domain-specific fuzzers for XML or JSON can also be used: 
+these fuzzers parse the high-level tree structure of an input and include custom fuzzing rules (like reordering child nodes, 
+increasing their number, inversing parent-child relationships, and so on) that will challenge the application logic while still 
+generating syntactically correct XML or JSON data. Of course, it is worth emphasizing that no fuzzing technique is guaranteed to 
+find all bugs in practice.
 
-Despite significant progress in the art and science of fuzzing over the last two decades, important challenges remain open. How to engineer exhaustive symbolic testing (that is, a form of verification) in a cost-effective manner is still an open problem for large applications. How to automate the generation of input grammars for complex formats, perhaps using machine learning, is another challenge. Finally, how to effectively fuzz large distributed applications like entire cloud services is yet another open challenge.
+Despite significant progress in the art and science of fuzzing over the last two decades, important challenges remain open. 
+How to engineer exhaustive symbolic testing (that is, a form of verification) in a cost-effective manner is still an open problem 
+for large applications. How to automate the generation of input grammars for complex formats, perhaps using machine learning, is 
+another challenge. Finally, how to effectively fuzz large distributed applications like entire cloud services is yet another open 
+challenge.
 ```
