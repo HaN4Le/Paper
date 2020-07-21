@@ -63,7 +63,7 @@ for large applications. How to automate the generation of input grammars for com
 another challenge. Finally, how to effectively fuzz large distributed applications like entire cloud services is yet another open 
 challenge.
 ```
-
+<hr>
 #### 第二篇：《LearnAFL: Greybox Fuzzing With Knowledge Enhancement》
 > ACCESS.2019.2936235
 
@@ -82,5 +82,19 @@ Key Words：学习输入的格式， 深度fuzz， 灰盒测试， 漏洞挖掘
 
 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;该paper中详细介绍了种子的变异策略：确定性变异策略和任意变异策略。其中确定性变异策略包括：**bitflip（比特翻转）, arithmetic, interest, dictionary**，这种突变不带随机性；另外一种就是任意变异策略，包括**havoc（破坏）和splice（拼接）**。在havoc阶段，AFL从确定性变异策略中任意选择一个变异操作符的序列，把这个序列运用到种子文件中的任意位置之中，这样就会产生新的测试用例。最后一个阶段是拼接策略，该策略允许AFL从种子序列Q中任意选择一个种子，并且将其和当前的种子进行拼接。
 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**映射理论模型**：作者将种子和执行的路径看作一个映射，也可以说是一个函数，F: T → P，如果s<sub>i</sub>执行的路径是M中的j，可以这样表示：F(s<sub>i</sub>) = j，这样就可以得到输入和执行程序的路径的关系：
+- |T| > |M|：那么F是一个surjection，不是双射
 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**基于等价类的格式生成理论**：为了得到一个双射，通过种子执行的路径，将 T 划分为一些等价类的 T<sub>i</sub>，T<sub>i</sub> = {s<sub>ij</sub> | F(s<sub>ij</sub>) = i}，因此可以得到一个双满射：F': T' → P，T' = {T<sub>1</sub>,T<sub>2</sub>,T<sub>3</sub>,……,T<sub>N-1</sub>,T<sub>N</sub>}。
 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AFLFast提出了基于突变的模糊转移概率（*transition probability*），以马尔科夫链为模型。
+
+<hr>
+#### 第三篇：《猫群算法及其改进算法研究》
+> 兰州大学 硕士论文
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CSO 与其他 EC 和 SI 算法相似，也是经过个体之间的合作，实现对优化问题的最优解的搜索。CSO 中，个体猫为待求解的问题的可行解。CSO 将猫群行 为模式分为两种；跟踪模式和搜寻模式。
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CSO 的进化行为与传统的SI算法不同，CSO 并不通过选取适应度高的部分个体产生下一代，以提高每一代解的整体质量。它是通过不断迭代过程和在每次迭代中对猫群的重新分配模式来不断地寻找当前最优解。因结合率为一个较小的值，所以大部分的猫的状态处于搜寻模式。
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**猫群算法的思想：**在初始化时将猫群置为随机的一组解，然后通过不断地迭代过程找到最优解，这个过程为：首先根据MR值（跟踪模式/整个猫群）对猫群进行分组，在每一次迭代中，**每只猫对跟踪速度和位置两个极值进行更新，**同时也实现猫群之间的信息交换，通过对问题表达出的**适应度函数**来计算每一只猫的<font color = "red">**适应度值**</font>从而寻找问题的最优解
