@@ -10,7 +10,7 @@
 
 # Paper
 
-#### 第一篇：《Fuzzing: Hack, Art, and Science》(Review)
+### 第一篇：《Fuzzing: Hack, Art, and Science》(Review)
 
   主要讲述的是模糊测试的发展和技术，其中fuzzing包括：
   
@@ -65,7 +65,7 @@ challenge.
 ```
 <hr>
 
-#### 第二篇：《LearnAFL: Greybox Fuzzing With Knowledge Enhancement》
+### 第二篇：《LearnAFL: Greybox Fuzzing With Knowledge Enhancement》
 > ACCESS.2019.2936235
 
 Key Words：学习输入的格式， 深度fuzz， 灰盒测试， 漏洞挖掘
@@ -92,7 +92,7 @@ Key Words：学习输入的格式， 深度fuzz， 灰盒测试， 漏洞挖掘
 
 <hr>
 
-#### 第三篇：《猫群算法及其改进算法研究》
+### 第三篇：《猫群算法及其改进算法研究》
 > 兰州大学 硕士论文
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CSO 与其他 EC 和 SI 算法相似，也是经过个体之间的合作，实现对优化问题的最优解的搜索。CSO 中，个体猫为待求解的问题的可行解。CSO 将猫群行 为模式分为两种；跟踪模式和搜寻模式。
@@ -125,7 +125,7 @@ CSO的缺点：
 
 <hr>
 
-#### 第四篇：《基于改进猫群算法的物联网感知层路由优化策略》
+### 第四篇：《基于改进猫群算法的物联网感知层路由优化策略》
 > 计算机工程 
 
 1. 传感器节点 作为物联网感知层的基础单元，承担着重要的信息 采集任务，但是节点一般都只有有限的能量。为了能及时可靠地获得感知数据降低损失并延长网络的生命周期，对物联网中传感器节点能耗及感知层能量均匀合理使用提出了更高的要求。
@@ -139,3 +139,39 @@ CSO的缺点：
 2.猫的适应度用AFL的什么来衡量？
 
 ```
+
+
+### 第五篇：《EcoFuzz: Adaptive Energy-Saving Greybox Fuzzing as a Variant of the Adversarial Multi-Armed Bandit》
+> 
+
+`阅读源码`
+```C
+ while(q){
+    if(!q->was_fuzzed && queue_cur->was_fuzzed){
+      queue_cur = q;
+      current_entry = i;
+      break;
+    }
+    q = q->next;
+    i++;
+}
+```
+当队列中还没有被fuzz的种子，而且当前队列中是被fuzz的，则将没有被fuzz的赋值给当前的队列；否则执行下一个队列
+
+```C
+while(q) {
+    if(!q->was_fuzzed){
+     state_of_fuzz = 1;
+     return;
+    }
+    q = q->next;
+}
+state_of_fuzz = 2;
+```
+当队列中还存在没有被fuzz的（白），状态设置为`1`，并退出程序；如果队列中全部都是被fuzz的（黑），状态设置为`2`
+
+#### 1.模糊测试工具的发展
+
+1. CGF获取检测工具生成的路径覆盖率，并根据`路径覆盖率`选择好的种子，这样可以提升路径覆盖率和漏洞挖掘率；
+2. AFL对文件程序的模糊测试是一个好的方法，但是用来被测试真实的程序时，出现了很多不足，最主要的挑战是：大多数测试用例都沿相同的几个路径运行，从而导致`大量能量浪费在高频路径上`。特别是在模糊测试后期，AFL中运行在高频路径上的种子在挖掘新漏洞方面不会再有很大的帮助；
+3. AFL的调度算法不是建立在科学的理论模型上；
