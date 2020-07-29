@@ -193,8 +193,8 @@ state_of_fuzz = 2;
 6. AFL根据其得分为种子分配能量，该得分基于覆盖率（优先考虑覆盖更多程序的输入）、执行时间（优先考虑执行速度更快的输入）和发现时间（优先考虑以后发现的输入）。如果发现新的路径，AFL会给该种子分配双倍的能量；
 7. AFL以QEMU模式支持给二进制文件进行插桩；
 8. AFL不能动态的调整它的能量分配，虽然AFL有一个简单的搜索策略，但是这种策略是无效的，导致AFL轮流选择有价值的种子；
+<<<<<<< HEAD
 9. AFL中随着不断地运行，发现新的路径的概率越来越小；
-
 
 #### 2.本篇论文
 
@@ -203,6 +203,7 @@ state_of_fuzz = 2;
 - 该模型中分为`Exploitation`和`Exploration`阶段（ps：可以和猫群相对应着分析）
 - 在MAB模型中，将`arm`视为种子，然而在fuzz期间种子的数量是增加的，发现新路径的概率是减少的；
 
+<<<<<<< HEAD
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于MAB的缺陷，本文是在Auer et al.等人提出的MAB变体问题：Adversarial Multi-Armed Bandit (AMAB)。本文中将`种子搜索`和`分配能量`的过程建模为AMAB问题的变体，在该模型中做出了两个假设：
 
 1. 程序A的被执行路径和crashes是有限的，标记为n<sub>p</sub>，n<ssub>c</sub>；
@@ -283,5 +284,4 @@ Require: Initial Seeds Set S
 Ensure: T_c
 ```
 
-
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于MAB的缺陷，本文是在Auer et al.等人提出的MAB变体问题：Adversarial Multi-Armed Bandit (AMAB)
