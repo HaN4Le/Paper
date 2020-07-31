@@ -193,8 +193,8 @@ state_of_fuzz = 2;
 6. AFL根据其得分为种子分配能量，该得分基于覆盖率（优先考虑覆盖更多程序的输入）、执行时间（优先考虑执行速度更快的输入）和发现时间（优先考虑以后发现的输入）。如果发现新的路径，AFL会给该种子分配双倍的能量；
 7. AFL以QEMU模式支持给二进制文件进行插桩；
 8. AFL不能动态的调整它的能量分配，虽然AFL有一个简单的搜索策略，但是这种策略是无效的，导致AFL轮流选择有价值的种子；
-<<<<<<< HEAD
 9. AFL中随着不断地运行，发现新的路径的概率越来越小；
+10. AFL中的种子能量分配是以边的覆盖和执行时间为依据的，而AFLFast将覆盖低频路径的种子视为好种子
 
 #### 2.本篇论文
 
@@ -202,9 +202,7 @@ state_of_fuzz = 2;
 - 在该模型中，玩家玩众多臂膀的其中一个，以获得奖励。玩家的主要目标是在最后的尝试中使得奖励最大化
 - 该模型中分为`Exploitation`和`Exploration`阶段（ps：可以和猫群相对应着分析）
 - 在MAB模型中，将`arm`视为种子，然而在fuzz期间种子的数量是增加的，发现新路径的概率是减少的；
-
-<<<<<<< HEAD
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于MAB的缺陷，本文是在Auer et al.等人提出的MAB变体问题：Adversarial Multi-Armed Bandit (AMAB)。本文中将`种子搜索`和`分配能量`的过程建模为AMAB问题的变体，在该模型中做出了两个假设：
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于MAB的缺陷，本文是在Auer et al.等人提出的MAB变体问题：Adversarial Multi-Armed Bandit (AMAB)。本文中将`种子搜索`和`分配能量`的过程建模为AMAB问题的变体，在该模型中做出了两个假设：
 
 1. 程序A的被执行路径和crashes是有限的，标记为n<sub>p</sub>，n<ssub>c</sub>；
 
@@ -334,3 +332,20 @@ Ensure: T_c
 
 
 
+### 第七篇：《Cerebro: Context-Aware Adaptive Fuzzing for Effective Vulnerability Detection》
+
+> Yuekang Li, Yinxing Xue, Hongxu Chen, Xiuheng Wu, Cen Zhang, Xiaofei Xie, Haijun Wang, and Yang Liu. 2019. Cerebro: Context-Aware Adaptive Fuzzing for Effective Vulnerability Detection. In Proceedings of the 27th ACM Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering (ESEC/FSE ’19), August 26–30, 2019, Tallinn, Estonia. ACM, New York, NY, USA, 12 pages.
+
+`本文的贡献`
+
+- 标准化了一个新的概念：输入潜力。它代表了未被覆盖代码的复杂度；同时还提出了一个我们还提出了一种经济高效的算法，可以快速计算“输入潜力”，以方便能量的分配；
+- 本文提出了一个基于多目标的模型以及用于种子优先级排序的高效排序算法；
+- 实现了 CEREBRO 并对其性能进行了评估
+
+`非支配排序算法`
+
+影响多目标排序的指标有：文件大小、执行时间、覆盖边的数量、是否产生新的路径覆盖以及执行跟踪的静态复杂度得分
+
+- 文件大小：较小的种子更紧凑 - 对它们的突变更可能命中有趣的字节
+- 运行时间：较短运行时间的种子会增加PUT的的平均速度
+- 覆盖边的数量：高覆盖率的种子是更喜爱的
