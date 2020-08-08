@@ -1,0 +1,45 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: main - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\15273\AppData\Local\Temp\RSP6908.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/main.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\学习文件夹\二进制\AFL\afl相关论文\Paper\要读paper\NSGA3\nsga3cpp1.20\src\main.cpp"
+]
+Creating command line "cl.exe @C:\Users\15273\AppData\Local\Temp\RSP6908.tmp" 
+<h3>Output Window</h3>
+Compiling...
+main.cpp
+e:\学习文件夹\二进制\afl\afl相关论文\paper\要读paper\nsga3\nsga3cpp1.20\src\problem_base.h(18) : error C2039: 'size_t' : is not a member of 'std'
+e:\学习文件夹\二进制\afl\afl相关论文\paper\要读paper\nsga3\nsga3cpp1.20\src\problem_base.h(19) : error C2039: 'size_t' : is not a member of 'std'
+e:\学习文件夹\二进制\afl\afl相关论文\paper\要读paper\nsga3\nsga3cpp1.20\src\alg_nsgaiii.h(32) : error C2039: 'size_t' : is not a member of 'std'
+e:\学习文件夹\二进制\afl\afl相关论文\paper\要读paper\nsga3\nsga3cpp1.20\src\alg_nsgaiii.h(33) : error C2039: 'size_t' : is not a member of 'std'
+e:\学习文件夹\二进制\afl\afl相关论文\paper\要读paper\nsga3\nsga3cpp1.20\src\alg_individual.h(20) : error C2039: 'size_t' : is not a member of 'std'
+e:\学习文件夹\二进制\afl\afl相关论文\paper\要读paper\nsga3\nsga3cpp1.20\src\alg_individual.h(20) : error C2039: 'size_t' : is not a member of 'std'
+e:\学习文件夹\二进制\afl\afl相关论文\paper\要读paper\nsga3\nsga3cpp1.20\src\alg_population.h(11) : error C2039: 'size_t' : is not a member of 'std'
+e:\学习文件夹\二进制\afl\afl相关论文\paper\要读paper\nsga3\nsga3cpp1.20\src\alg_population.h(13) : error C2039: 'size_t' : is not a member of 'std'
+e:\学习文件夹\二进制\afl\afl相关论文\paper\要读paper\nsga3\nsga3cpp1.20\src\alg_population.h(14) : error C2039: 'size_t' : is not a member of 'std'
+e:\学习文件夹\二进制\afl\afl相关论文\paper\要读paper\nsga3\nsga3cpp1.20\src\alg_population.h(16) : error C2039: 'size_t' : is not a member of 'std'
+e:\学习文件夹\二进制\afl\afl相关论文\paper\要读paper\nsga3\nsga3cpp1.20\src\gnuplot_interface.h(31) : error C2039: 'size_t' : is not a member of 'std'
+e:\学习文件夹\二进制\afl\afl相关论文\paper\要读paper\nsga3\nsga3cpp1.20\src\gnuplot_interface.h(31) : error C2039: 'size_t' : is not a member of 'std'
+e:\学习文件夹\二进制\afl\afl相关论文\paper\要读paper\nsga3\nsga3cpp1.20\src\gnuplot_interface.h(32) : error C2039: 'size_t' : is not a member of 'std'
+e:\学习文件夹\二进制\afl\afl相关论文\paper\要读paper\nsga3\nsga3cpp1.20\src\gnuplot_interface.h(32) : error C2039: 'size_t' : is not a member of 'std'
+e:\学习文件夹\二进制\afl\afl相关论文\paper\要读paper\nsga3\nsga3cpp1.20\src\gnuplot_interface.h(32) : error C2039: 'size_t' : is not a member of 'std'
+e:\学习文件夹\二进制\afl\afl相关论文\paper\要读paper\nsga3\nsga3cpp1.20\src\main.cpp(28) : error C2664: '__thiscall std::basic_ifstream<char,struct std::char_traits<char> >::std::basic_ifstream<char,struct std::char_traits<char> >(const char *,int)' : cannot convert parameter 1 from 'class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >' to 'const char *'
+        No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+e:\学习文件夹\二进制\afl\afl相关论文\paper\要读paper\nsga3\nsga3cpp1.20\src\main.cpp(37) : error C2664: '__thiscall std::basic_ofstream<char,struct std::char_traits<char> >::std::basic_ofstream<char,struct std::char_traits<char> >(const char *,int)' : cannot convert parameter 1 from 'class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >' to 'const char *'
+        No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+执行 cl.exe 时出错.
+
+
+
+<h3>Results</h3>
+main.obj - 1 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
